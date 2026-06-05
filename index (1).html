@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmileCraft Dental Clinic – Crafting Smiles With Perfection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: #383838;
+      background: #faf9f6;
+      overflow-x: hidden;
+    }
+
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --gold: #C9A227;
+      --gold-light: #e8c96a;
+      --gold-dark: #a07d10;
+      --dark: #383838;
+      --cream: #faf9f6;
+      --cream2: #f3efe6;
+      --white: #ffffff;
+      --text-light: #6b6b6b;
+      --border: rgba(201,162,39,0.25);
+    }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    /* ===== UTILITY ===== */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .gold { color: var(--gold); }
+    .section-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.15;
+    }
+    .divider-gold {
+      width: 60px; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin: 18px 0 28px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gold);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 30px;
+      border-radius: 2px;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 4px 20px rgba(201,162,39,0.35);
+    }
+    .btn-primary:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(201,162,39,0.45);
+    }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 13px 28px;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .btn-outline:hover {
+      background: var(--gold);
+      color: #fff;
+    }
+    img { display: block; max-width: 100%; }
+
+    /* ===== ANNOUNCEMENT BAR ===== */
+    .announcement-bar {
+      background: var(--dark);
+      color: rgba(255,255,255,0.85);
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-align: center;
+      padding: 9px 24px;
+    }
+    .announcement-bar span { color: var(--gold-light); font-weight: 600; }
+
+    /* ===== HEADER / NAV ===== */
+    header {
+      background: rgba(250,249,246,0.97);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .nav-logo img {
+      height: 68px;
+      width: auto;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--dark);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      position: relative;
+      transition: color 0.2s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1.5px;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-instagram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      transition: all 0.3s;
+    }
+    .nav-instagram:hover { background: var(--gold); }
+    .nav-instagram svg { width: 16px; height: 16px; fill: none; stroke: var(--gold); stroke-width: 1.5; transition: stroke 0.3s; }
+    .nav-instagram:hover svg { stroke: #fff; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--dark); transition: all 0.3s; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 94vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 60px 80px 80px;
+      background: var(--cream);
+      position: relative;
+      z-index: 2;
+    }
+    .hero-left::after {
+      content: '';
+      position: absolute;
+      top: 0; right: -60px;
+      width: 120px; height: 100%;
+      background: var(--cream);
+      clip-path: polygon(0 0, 0 100%, 100% 100%);
+      z-index: 1;
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 40px; height: 1.5px;
+      background: var(--gold);
+    }
+    .hero-eyebrow span {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 5vw, 4.8rem);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.08;
+      margin-bottom: 8px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+      display: block;
+    }
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--text-light);
+      margin-bottom: 28px;
+      letter-spacing: 0.3px;
+    }
+    .hero-desc {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #5a5a5a;
+      max-width: 440px;
+      margin-bottom: 40px;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 36px;
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+    .hero-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 12px;
+      color: var(--text-light);
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+    }
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .hero-right-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,162,39,0.1) 0%, transparent 60%);
+    }
+    .hero-badge {
+      position: absolute;
+      bottom: 40px;
+      left: 40px;
+      background: rgba(255,255,255,0.95);
+      border: 1px solid var(--border);
+      padding: 18px 24px;
+      border-radius: 4px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      backdrop-filter: blur(8px);
+    }
+    .hero-badge-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    .hero-badge-sub {
+      font-size: 11px;
+      color: var(--text-light);
+      margin-top: 3px;
+    }
+    .hero-badge-rating {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .stars { color: var(--gold); font-size: 13px; letter-spacing: 2px; }
+
+    /* ===== FEATURES STRIP ===== */
+    .features-strip {
+      background: var(--dark);
+      padding: 28px 0;
+    }
+    .features-strip-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 32px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .feature-item:last-child { border-right: none; }
+    .feature-icon {
+      width: 42px; height: 42px;
+      background: rgba(201,162,39,0.15);
+      border: 1px solid rgba(201,162,39,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+    .feature-text strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+    .feature-text span {
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* ===== ABOUT ===== */
+    .about {
+      padding: 100px 0;
+      background: var(--white);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-images {
+      position: relative;
+    }
+    .about-img-main {
+      width: 75%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: 4px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 24px 24px 60px rgba(0,0,0,0.12);
+    }
+    .about-img-secondary {
+      width: 55%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 4px;
+      position: absolute;
+      bottom: -30px;
+      right: 0;
+      z-index: 3;
+      border: 5px solid #fff;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    }
+    .about-decor {
+      position: absolute;
+      top: 30px; right: 10%;
+      width: 200px; height: 200px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      z-index: 1;
+    }
+    .about-content p {
+      font-size: 15.5px;
+      line-height: 1.8;
+      color: #5a5a5a;
+      margin-bottom: 20px;
+    }
+    .about-credentials {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 28px 0;
+    }
+    .credential-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--dark);
+    }
+    .credential-item::before {
+      content: '';
+      width: 8px; height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ===== SERVICES ===== */
+    .services {
+      padding: 100px 0;
+      background: var(--cream2);
+    }
+    .services-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .services-header .divider-gold {
+      margin: 18px auto 28px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .service-card {
+      background: var(--white);
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.4s;
+      group: true;
+    }
+    .service-card:hover { transform: translateY(-6px); z-index: 2; }
+    .service-card-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .service-card:hover .service-card-img { transform: scale(1.05); }
+    .service-card-body {
+      padding: 28px 28px 32px;
+      position: relative;
+    }
+    .service-card-body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 28px;
+      width: 40px; height: 2px;
+      background: var(--gold);
+    }
+    .service-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: rgba(201,162,39,0.15);
+      position: absolute;
+      top: 20px; right: 24px;
+      line-height: 1;
+    }
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+    .service-card p {
+      font-size: 13.5px;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery {
+      padding: 100px 0;
+      background: var(--white);
+    }
+    .gallery-header { margin-bottom: 48px; }
+    .gallery-masonry {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 200px;
+      gap: 4px;
+    }
+    .gallery-item {
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery-item.tall { grid-row: span 2; }
+    .gallery-item.wide { grid-column: span 2; }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.08); }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(56,56,56,0.55) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    /* ===== WHY US ===== */
+    .why {
+      padding: 100px 0;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .why::before {
+      content: '"';
+      position: absolute;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40rem;
+      color: rgba(201,162,39,0.04);
+      top: -80px; left: -40px;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .why-content .section-title { color: #fff; }
+    .why-content p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 40px;
+    }
+    .why-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .why-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      color: rgba(255,255,255,0.85);
+      font-size: 14.5px;
+      line-height: 1.6;
+    }
+    .why-icon {
+      width: 36px; height: 36px;
+      background: rgba(201,162,39,0.15);
+      border: 1px solid rgba(201,162,39,0.35);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 15px;
+    }
+    .why-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 220px 220px;
+      gap: 8px;
+    }
+    .why-images img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 3px;
+    }
+    .why-images img:first-child {
+      grid-row: span 2;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      padding: 100px 0;
+      background: var(--cream2);
+    }
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .testimonials-header .divider-gold {
+      margin: 18px auto 0;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--white);
+      padding: 36px 32px;
+      border-radius: 4px;
+      position: relative;
+      border: 1px solid var(--border);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .testimonial-card:hover {
+      box-shadow: 0 12px 40px rgba(201,162,39,0.12);
+      transform: translateY(-4px);
+    }
+    .testimonial-card::before {
+      content: '\201C';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      color: var(--gold);
+      opacity: 0.3;
+      position: absolute;
+      top: 16px; left: 24px;
+      line-height: 1;
+    }
+    .testimonial-text {
+      font-size: 14.5px;
+      line-height: 1.8;
+      color: var(--text-light);
+      margin-bottom: 24px;
+      padding-top: 20px;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .testimonial-avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .testimonial-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    .testimonial-date { font-size: 12px; color: #aaa; }
+    .test-stars { color: var(--gold); font-size: 12px; letter-spacing: 2px; margin-bottom: 4px; }
+
+    /* ===== APPOINTMENT / CONTACT ===== */
+    .appointment {
+      padding: 100px 0;
+      background: var(--white);
+    }
+    .appointment-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+    .contact-icon {
+      width: 48px; height: 48px;
+      background: var(--cream2);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+    .contact-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .contact-value {
+      font-size: 15px;
+      color: var(--dark);
+      font-weight: 500;
+    }
+    .contact-value a {
+      color: var(--dark);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-value a:hover { color: var(--gold); }
+    .map-embed {
+      margin-top: 32px;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .map-embed iframe {
+      width: 100%;
+      height: 280px;
+      border: none;
+      display: block;
+    }
+    .whatsapp-cta {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      border-radius: 4px;
+      padding: 36px;
+      text-align: center;
+      margin-top: 0;
+    }
+    .whatsapp-cta h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .whatsapp-cta p {
+      color: rgba(255,255,255,0.85);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      color: #128C7E;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 2px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+    .hours-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 28px;
+    }
+    .hour-item {
+      background: var(--cream);
+      padding: 14px 18px;
+      border-radius: 3px;
+      border: 1px solid var(--border);
+    }
+    .hour-day { font-size: 12px; font-weight: 600; color: var(--gold); letter-spacing: 0.5px; }
+    .hour-time { font-size: 13px; color: var(--dark); margin-top: 2px; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #262626;
+      padding: 70px 0 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 60px;
+      padding-bottom: 60px;
+    }
+    .footer-logo { height: 64px; width: auto; margin-bottom: 20px; }
+    .footer-about {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+    }
+    .footer-social {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+    .footer-social:hover {
+      border-color: var(--gold);
+      background: rgba(201,162,39,0.1);
+    }
+    .footer-social svg { width: 15px; height: 15px; fill: none; stroke: rgba(255,255,255,0.6); stroke-width: 1.5; transition: stroke 0.3s; }
+    .footer-social:hover svg { stroke: var(--gold); }
+    .footer-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(201,162,39,0.2);
+    }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-contact-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .fc-icon { font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+    .fc-text {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+    .fc-text a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .fc-text a:hover { color: var(--gold); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 0.5px; }
+    .footer-bottom-links { display: flex; gap: 24px; }
+    .footer-bottom-links a { font-size: 12px; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+    .footer-bottom-links a:hover { color: var(--gold); }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-up.d1 { transition-delay: 0.1s; }
+    .fade-up.d2 { transition-delay: 0.2s; }
+    .fade-up.d3 { transition-delay: 0.3s; }
+    .fade-up.d4 { transition-delay: 0.4s; }
+
+    /* ===== MOBILE NAV ===== */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--cream);
+      z-index: 9999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--dark);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .mobile-nav a:hover { color: var(--gold); }
+    .mobile-nav-close {
+      position: absolute;
+      top: 24px; right: 24px;
+      font-size: 28px;
+      cursor: pointer;
+      color: var(--dark);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 60px 40px; }
+      .hero-left::after { display: none; }
+      .hero-right { height: 400px; }
+      .about-grid, .why-grid, .appointment-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-img-main { width: 90%; }
+      .features-strip-inner { grid-template-columns: repeat(2, 1fr); gap: 16px; padding: 16px 24px; }
+      .feature-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 12px 0; }
+      .feature-item:nth-child(2), .feature-item:last-child { border-bottom: none; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-masonry { grid-template-columns: repeat(3, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-left { padding: 50px 24px; }
+      .hero-right { height: 300px; }
+      .hero-stats { gap: 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .gallery-masonry { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
+      .gallery-item.wide { grid-column: span 1; }
+      .why-images { grid-template-columns: 1fr 1fr; grid-template-rows: 180px 180px; }
+      .why-images img:first-child { grid-row: span 1; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .hours-grid { grid-template-columns: 1fr; }
+      .nav-right .btn-primary { padding: 10px 18px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announcement-bar">
+  🦷 Now accepting new patients &nbsp;|&nbsp; <span>Call or WhatsApp: +91 90968 91186</span> &nbsp;|&nbsp; Modern dental care in the heart of Pune
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="https://ik.imagekit.io/86tiyz2by/HD_Logo-removebg-preview.png" alt="SmileCraft Dental Clinic Logo" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="https://www.instagram.com/smilecraft_dental_clinic_pune?igsh=MTRoaHo5cnEyejU1dQ&utm_source=qr" target="_blank" rel="noopener" class="nav-instagram" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4.5"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <a href="https://wa.me/919096891186?text=Hello%20Dr.%20Pooja%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20SmileCraft%20Dental%20Clinic." target="_blank" class="btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 10.79 19.79 19.79 0 01.34 2.18 2 2 0 012.33 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-.76a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        Book Appointment
+      </a>
+      <div class="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobileNav">
+  <span class="mobile-nav-close" onclick="toggleMobileNav()">✕</span>
+  <a href="#about" onclick="toggleMobileNav()">About</a>
+  <a href="#services" onclick="toggleMobileNav()">Services</a>
+  <a href="#gallery" onclick="toggleMobileNav()">Gallery</a>
+  <a href="#testimonials" onclick="toggleMobileNav()">Reviews</a>
+  <a href="#contact" onclick="toggleMobileNav()">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-eyebrow"><span>Dental Excellence in Pune</span></div>
+    <h1>
+      Dr. Pooja<br>
+      <em>Vijapure</em>
+    </h1>
+    <p class="hero-tagline">Crafting Smiles With Perfection</p>
+    <p class="hero-desc">
+      Welcome to SmileCraft Dental Clinic — where advanced dentistry meets genuine care. We believe every smile deserves the finest attention, delivered in a warm and comfortable environment.
+    </p>
+    <div class="hero-ctas">
+      <a href="https://wa.me/919096891186?text=Hello%20Dr.%20Pooja%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" class="btn-primary">
+        📅 Book an Appointment
+      </a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">2000+</div>
+        <div class="hero-stat-label">Happy Patients</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">8+</div>
+        <div class="hero-stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">15+</div>
+        <div class="hero-stat-label">Treatments Offered</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://ik.imagekit.io/86tiyz2by/pexels-gustavo-fring-4971514.png" alt="SmileCraft Dental Clinic" />
+    <div class="hero-right-overlay"></div>
+    <div class="hero-badge">
+      <div class="hero-badge-title">SmileCraft Dental Clinic</div>
+      <div class="hero-badge-sub">Pune's Premier Dental Care</div>
+      <div class="hero-badge-rating">
+        <span class="stars">★★★★★</span>
+        <span style="font-size:12px;color:#888;">5.0 Rating</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES STRIP -->
+<div class="features-strip">
+  <div class="container">
+    <div class="features-strip-inner">
+      <div class="feature-item">
+        <div class="feature-icon">🦷</div>
+        <div class="feature-text">
+          <strong>Advanced Technology</strong>
+          <span>Modern dental equipment</span>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">💉</div>
+        <div class="feature-text">
+          <strong>Painless Treatments</strong>
+          <span>Comfort-focused dentistry</span>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🧼</div>
+        <div class="feature-text">
+          <strong>Sterilized Environment</strong>
+          <span>International hygiene standards</span>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📋</div>
+        <div class="feature-text">
+          <strong>Personalized Care</strong>
+          <span>Tailored treatment plans</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-images fade-up">
+        <img class="about-img-main" src="https://ik.imagekit.io/86tiyz2by/pexels-cedric-fauntleroy-4270374.png" alt="Dr. Pooja Vijapure" />
+        <img class="about-img-secondary" src="https://ik.imagekit.io/86tiyz2by/pexels-olly-3884085.jpg" alt="Dental Clinic" />
+        <div class="about-decor"></div>
+      </div>
+      <div class="about-content fade-up d2">
+        <span class="section-label">About the Doctor</span>
+        <h2 class="section-title">Meet Dr. Pooja<br>Vijapure, BDS</h2>
+        <div class="divider-gold"></div>
+        <p>
+          Dr. Pooja Vijapure is a highly qualified and dedicated dental professional with over 8 years of clinical experience. Her passion for dentistry goes beyond procedures — she is deeply committed to transforming lives through beautiful, healthy smiles.
+        </p>
+        <p>
+          Trained in the latest dental techniques and technologies, Dr. Vijapure combines clinical expertise with a compassionate chairside manner that puts even the most anxious patients at ease. She believes that a confident smile is the foundation of a confident life.
+        </p>
+        <div class="about-credentials">
+          <div class="credential-item">Bachelor of Dental Surgery (BDS) — Registered Dentist</div>
+          <div class="credential-item">Certified in Advanced Cosmetic & Restorative Dentistry</div>
+          <div class="credential-item">Member — Indian Dental Association (IDA)</div>
+          <div class="credential-item">Specialisation in Orthodontics & Smile Design</div>
+          <div class="credential-item">8+ Years of Clinical Practice in Pune</div>
+        </div>
+        <a href="https://wa.me/919096891186" target="_blank" class="btn-primary">Schedule a Consultation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-header fade-up">
+      <span class="section-label">What We Offer</span>
+      <h2 class="section-title">Comprehensive Dental Services</h2>
+      <div class="divider-gold"></div>
+      <p style="max-width:560px;margin:0 auto;color:var(--text-light);font-size:15px;line-height:1.7;">
+        From routine checkups to complete smile transformations, we offer a full spectrum of dental treatments under one roof — all delivered with precision, care, and artistry.
+      </p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up d1">
+        <img class="service-card-img" src="https://ik.imagekit.io/86tiyz2by/pexels-cottonbro-6502032.png" alt="Cosmetic Dentistry" />
+        <div class="service-card-body">
+          <span class="service-num">01</span>
+          <h3>Cosmetic Dentistry</h3>
+          <p>Teeth whitening, veneers, bonding, and smile makeovers designed to give you the radiant smile you deserve with stunning, natural-looking results.</p>
+        </div>
+      </div>
+      <div class="service-card fade-up d2">
+        <img class="service-card-img" src="https://ik.imagekit.io/86tiyz2by/pexels-ionelceban-15456806.png" alt="Orthodontics" />
+        <div class="service-card-body">
+          <span class="service-num">02</span>
+          <h3>Orthodontics & Braces</h3>
+          <p>Metal braces, ceramic braces, and clear aligners to straighten teeth and correct bite issues — for children, teens, and adults alike.</p>
+        </div>
+      </div>
+      <div class="service-card fade-up d3">
+        <img class="service-card-img" src="https://ik.imagekit.io/86tiyz2by/pexels-pavel-danilyuk-6812544.png" alt="Dental Implants" />
+        <div class="service-card-body">
+          <span class="service-num">03</span>
+          <h3>Dental Implants</h3>
+          <p>Permanent, natural-looking tooth replacements that restore function and aesthetics. Our implants are placed with precision for long-lasting results.</p>
+        </div>
+      </div>
+      <div class="service-card fade-up d1">
+        <img class="service-card-img" src="https://ik.imagekit.io/86tiyz2by/pexels-numangilgil-10820367.png" alt="Root Canal" />
+        <div class="service-card-body">
+          <span class="service-num">04</span>
+          <h3>Root Canal Treatment</h3>
+          <p>Painless, single-sitting root canal procedures using rotary endodontics to save your natural tooth and eliminate infection effectively.</p>
+        </div>
+      </div>
+      <div class="service-card fade-up d2">
+        <img class="service-card-img" src="https://ik.imagekit.io/86tiyz2by/pexels-towfiqu-barbhuiya-3440682-11768114.png" alt="Teeth Cleaning" />
+        <div class="service-card-body">
+          <span class="service-num">05</span>
+          <h3>Scaling & Cleaning</h3>
+          <p>Professional deep cleaning, scaling, and polishing to remove plaque and tartar, prevent gum disease, and keep your teeth healthy and bright.</p>
+        </div>
+      </div>
+      <div class="service-card fade-up d3">
+        <img class="service-card-img" src="https://ik.imagekit.io/86tiyz2by/pexels-babydov-7788356.png" alt="Kids Dentistry" />
+        <div class="service-card-body">
+          <span class="service-num">06</span>
+          <h3>Paediatric Dentistry</h3>
+          <p>Gentle, fun, and anxiety-free dental care for children of all ages — building healthy habits and positive dental experiences from the very first visit.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="gallery-header fade-up">
+      <span class="section-label">Our Clinic & Results</span>
+      <h2 class="section-title">A Glimpse Into<br>SmileCraft</h2>
+      <div class="divider-gold"></div>
+      <p style="max-width:500px;color:var(--text-light);font-size:15px;line-height:1.7;margin-bottom:40px;">
+        Our clinic is designed to make you feel relaxed, comfortable, and confident. Take a look at our space and the smiles we craft every day.
+      </p>
+    </div>
+    <div class="gallery-masonry">
+      <div class="gallery-item tall">
+        <img src="https://ik.imagekit.io/86tiyz2by/pexels-andrii-kushniruk-459215840-15613764.png" alt="Clinic Interior" />
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item wide">
+        <img src="https://ik.imagekit.io/86tiyz2by/pexels-karola-g-6627722.jpg" alt="Dental Treatment" />
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://ik.imagekit.io/86tiyz2by/pexels-buselliyy-31786502.png" alt="Patient Care" />
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://ik.imagekit.io/86tiyz2by/pexels-cottonbro-6502300.jpg" alt="Dental Procedure" />
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://ik.imagekit.io/86tiyz2by/pexels-pavel-danilyuk-6812496.jpg" alt="Consultation" />
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item tall">
+        <img src="https://ik.imagekit.io/86tiyz2by/pexels-marcel-biegger-26342950-33172527.png" alt="Smile Result" />
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item wide">
+        <img src="https://ik.imagekit.io/86tiyz2by/pexels-olly-3884085.jpg" alt="Happy Patient" />
+        <div class="gallery-overlay"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-content fade-up">
+        <span class="section-label" style="color:var(--gold-light);">Why Choose Us</span>
+        <h2 class="section-title">Where Artistry<br>Meets Dentistry</h2>
+        <div class="divider-gold"></div>
+        <p>
+          At SmileCraft, we don't just treat teeth — we transform lives. Our approach is built on trust, technology, and the belief that every patient deserves exceptional, personalised care in a welcoming environment.
+        </p>
+        <ul class="why-list">
+          <li>
+            <div class="why-icon">🔬</div>
+            <div><strong style="color:#fff;display:block;margin-bottom:4px;">Latest Equipment & Technology</strong>Digital X-rays, intraoral cameras, and modern sterilization protocols for the safest, most accurate treatments.</div>
+          </li>
+          <li>
+            <div class="why-icon">💛</div>
+            <div><strong style="color:#fff;display:block;margin-bottom:4px;">Patient-Centred Philosophy</strong>Your comfort, concerns, and goals guide every decision. We listen before we treat.</div>
+          </li>
+          <li>
+            <div class="why-icon">✨</div>
+            <div><strong style="color:#fff;display:block;margin-bottom:4px;">Aesthetic Excellence</strong>Every restoration and cosmetic procedure is crafted with an artist's eye for natural, beautiful results.</div>
+          </li>
+          <li>
+            <div class="why-icon">🏆</div>
+            <div><strong style="color:#fff;display:block;margin-bottom:4px;">Trusted by Thousands</strong>Over 2,000 satisfied patients across Pune trust SmileCraft for their dental health and smile goals.</div>
+          </li>
+        </ul>
+      </div>
+      <div class="why-images fade-up d2">
+        <img src="https://ik.imagekit.io/86tiyz2by/pexels-cedric-fauntleroy-4270374.png" alt="Dental Care 1" />
+        <img src="https://ik.imagekit.io/86tiyz2by/pexels-cottonbro-6502032.png" alt="Dental Care 2" />
+        <img src="https://ik.imagekit.io/86tiyz2by/pexels-buselliyy-31786502.png" alt="Dental Care 3" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="testimonials-header fade-up">
+      <span class="section-label">Patient Reviews</span>
+      <h2 class="section-title">What Our Patients Say</h2>
+      <div class="divider-gold"></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up d1">
+        <div class="test-stars">★★★★★</div>
+        <p class="testimonial-text">Dr. Pooja is absolutely wonderful! I was terrified of dentists but she made me feel so at ease. My smile transformation has genuinely changed my confidence. The clinic is spotless and the staff is so warm. Highly recommend SmileCraft to everyone!</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">P</div>
+          <div>
+            <div class="testimonial-name">Priya Sharma</div>
+            <div class="testimonial-date">Smile Makeover Patient</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up d2">
+        <div class="test-stars">★★★★★</div>
+        <p class="testimonial-text">I got my braces done at SmileCraft and the entire journey was amazing. Dr. Vijapure is so patient and explains everything clearly. The results are beyond what I expected. The clinic uses the best technology and the appointments are always on time.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">R</div>
+          <div>
+            <div class="testimonial-name">Rahul Deshmukh</div>
+            <div class="testimonial-date">Orthodontics Patient</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up d3">
+        <div class="test-stars">★★★★★</div>
+        <p class="testimonial-text">My root canal was completely painless — I couldn't believe it! Dr. Pooja's expertise is unmatched. The clinic is beautifully maintained and hygienic. I've brought my whole family here and we all trust her completely. Best dentist in Pune!</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">S</div>
+          <div>
+            <div class="testimonial-name">Sneha Kulkarni</div>
+            <div class="testimonial-date">Root Canal Patient</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPOINTMENT / CONTACT -->
+<section class="appointment" id="contact">
+  <div class="container">
+    <div class="about-grid" style="gap:80px;">
+      <div class="fade-up">
+        <span class="section-label">Get in Touch</span>
+        <h2 class="section-title">Visit SmileCraft<br>Dental Clinic</h2>
+        <div class="divider-gold"></div>
+
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Our Location</div>
+            <div class="contact-value">
+              <a href="https://maps.app.goo.gl/N3oV4QsmvRjTZHkK8?g_st=ic" target="_blank">
+                SmileCraft Dental Clinic, Pune, Maharashtra<br>
+                <span style="font-size:13px;color:var(--gold);">Click to get directions →</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Phone / WhatsApp</div>
+            <div class="contact-value">
+              <a href="tel:+919096891186">+91 90968 91186</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">📸</div>
+          <div>
+            <div class="contact-label">Instagram</div>
+            <div class="contact-value">
+              <a href="https://www.instagram.com/smilecraft_dental_clinic_pune?igsh=MTRoaHo5cnEyejU1dQ&utm_source=qr" target="_blank">@smilecraft_dental_clinic_pune</a>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="contact-label" style="margin-bottom:0">Clinic Hours</div>
+          <div class="hours-grid" style="margin-top:12px;">
+            <div class="hour-item">
+              <div class="hour-day">Monday – Saturday</div>
+              <div class="hour-time">10:00 AM – 2:00 PM</div>
+            </div>
+            <div class="hour-item">
+              <div class="hour-day">Monday – Saturday</div>
+              <div class="hour-time">5:00 PM – 9:00 PM</div>
+            </div>
+            <div class="hour-item">
+              <div class="hour-day">Sunday</div>
+              <div class="hour-time">By Appointment Only</div>
+            </div>
+            <div class="hour-item">
+              <div class="hour-day">Emergency</div>
+              <div class="hour-time">Call / WhatsApp Anytime</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-embed">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d242243.14509773476!2d73.71661764648829!3d18.524564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="SmileCraft Dental Clinic Location">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="fade-up d2">
+        <div class="whatsapp-cta">
+          <h3>Book Your Appointment</h3>
+          <p>Ready to transform your smile? Click below to chat with us on WhatsApp. We'll get back to you promptly to schedule your visit.</p>
+          <a href="https://wa.me/919096891186?text=Hello%20Dr.%20Pooja%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20SmileCraft%20Dental%20Clinic." target="_blank" rel="noopener" class="btn-whatsapp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Chat on WhatsApp
+          </a>
+        </div>
+
+        <div style="margin-top:32px;padding:36px;background:var(--cream2);border:1px solid var(--border);border-radius:4px;">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--dark);margin-bottom:16px;">Our Commitment to You</h3>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div style="display:flex;align-items:flex-start;gap:14px;">
+              <span style="color:var(--gold);font-size:18px;margin-top:2px;">✓</span>
+              <div>
+                <strong style="font-size:14px;color:var(--dark);">Transparent Pricing</strong>
+                <p style="font-size:13px;color:var(--text-light);margin-top:2px;">No hidden charges. Clear estimates before any treatment begins.</p>
+              </div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:14px;">
+              <span style="color:var(--gold);font-size:18px;margin-top:2px;">✓</span>
+              <div>
+                <strong style="font-size:14px;color:var(--dark);">Comfortable Experience</strong>
+                <p style="font-size:13px;color:var(--text-light);margin-top:2px;">Anxiety-free, gentle treatments with your comfort as top priority.</p>
+              </div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:14px;">
+              <span style="color:var(--gold);font-size:18px;margin-top:2px;">✓</span>
+              <div>
+                <strong style="font-size:14px;color:var(--dark);">Lasting Results</strong>
+                <p style="font-size:13px;color:var(--text-light);margin-top:2px;">Every procedure is performed with meticulous attention to quality and longevity.</p>
+              </div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:14px;">
+              <span style="color:var(--gold);font-size:18px;margin-top:2px;">✓</span>
+              <div>
+                <strong style="font-size:14px;color:var(--dark);">Follow-Up Care</strong>
+                <p style="font-size:13px;color:var(--text-light);margin-top:2px;">We stay connected after your treatment for ongoing oral health guidance.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="https://ik.imagekit.io/86tiyz2by/HD_Logo-removebg-preview.png" alt="SmileCraft Dental Clinic" class="footer-logo" />
+        <p class="footer-about">
+          SmileCraft Dental Clinic is Pune's trusted destination for comprehensive dental care. Led by Dr. Pooja Vijapure, we are committed to crafting beautiful, healthy smiles with precision, compassion, and the latest dental technology.
+        </p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/smilecraft_dental_clinic_pune?igsh=MTRoaHo5cnEyejU1dQ&utm_source=qr" target="_blank" rel="noopener" class="footer-social" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,0.6)" stroke="none"/></svg>
+          </a>
+          <a href="https://wa.me/919096891186" target="_blank" rel="noopener" class="footer-social" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="rgba(255,255,255,0.6)" stroke="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Dr. Vijapure</a></li>
+          <li><a href="#services">Our Services</a></li>
+          <li><a href="#gallery">Clinic Gallery</a></li>
+          <li><a href="#testimonials">Patient Reviews</a></li>
+          <li><a href="#contact">Book Appointment</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-heading">Contact Us</div>
+        <div class="footer-contact-line">
+          <span class="fc-icon">📍</span>
+          <p class="fc-text">
+            <a href="https://maps.app.goo.gl/N3oV4QsmvRjTZHkK8?g_st=ic" target="_blank">
+              SmileCraft Dental Clinic<br>Pune, Maharashtra, India
+            </a>
+          </p>
+        </div>
+        <div class="footer-contact-line">
+          <span class="fc-icon">📞</span>
+          <p class="fc-text"><a href="tel:+919096891186">+91 90968 91186</a></p>
+        </div>
+        <div class="footer-contact-line">
+          <span class="fc-icon">💬</span>
+          <p class="fc-text"><a href="https://wa.me/919096891186" target="_blank">WhatsApp Us</a></p>
+        </div>
+        <div class="footer-contact-line">
+          <span class="fc-icon">📸</span>
+          <p class="fc-text"><a href="https://www.instagram.com/smilecraft_dental_clinic_pune?igsh=MTRoaHo5cnEyejU1dQ&utm_source=qr" target="_blank">@smilecraft_dental_clinic_pune</a></p>
+        </div>
+        <div style="margin-top:24px;">
+          <a href="https://wa.me/919096891186?text=Hello%20Dr.%20Pooja%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" class="btn-primary" style="font-size:12px;padding:12px 22px;">
+            📅 Book Appointment
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 SmileCraft Dental Clinic. All rights reserved. | Dr. Pooja Vijapure, BDS</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<!-- SCROLL ANIMATION + MOBILE NAV JS -->
+<script>
+  // Intersection Observer for fade-up animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Mobile Nav Toggle
+  function toggleMobileNav() {
+    document.getElementById('mobileNav').classList.toggle('open');
+  }
+
+  // Sticky header shadow on scroll
+  window.addEventListener('scroll', () => {
+    const h = document.querySelector('header');
+    h.style.boxShadow = window.scrollY > 40 ? '0 4px 24px rgba(0,0,0,0.08)' : 'none';
+  });
+</script>
+</body>
+</html>
